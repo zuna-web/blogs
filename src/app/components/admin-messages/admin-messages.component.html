@@ -1,0 +1,24 @@
+<table *ngIf="messages?.length > 0; else noComments" class="table table-striped">
+    <thead class="thead-inverse">
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Message</th>
+        <th>Date</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of messages">
+        <td>{{item.id}}</td>
+        <td>{{item.name}}</td>
+        <td>{{item.message}}</td>
+        <td>{{item.date * 1000 | date}}</td>
+        <td><button (click)="deleteMessage(item.id)">Delete</button></td>
+      </tr>
+    </tbody>
+  </table>
+  <ng-template #noComments>
+    <hr>
+    <h5>There are no Messages</h5>
+  </ng-template>

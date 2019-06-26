@@ -1,0 +1,26 @@
+<table *ngIf="comments?.length > 0; else noComments" class="table table-striped">
+  <thead class="thead-inverse">
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Comment</th>
+      <th>Status</th>
+      <th>Approve</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of comments">
+      <td>{{item.id}}</td>
+      <td>{{item.name}}</td>
+      <td>{{item.comment}}</td>
+      <td>
+          {{item.status}}
+      </td>
+      <td><button (click)="update(item.id, item.status)">Update</button> </td>
+    </tr>
+  </tbody>
+</table>
+<ng-template #noComments>
+  <hr>
+  <h5>There are no Comments</h5>
+</ng-template>

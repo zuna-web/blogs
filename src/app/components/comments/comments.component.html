@@ -1,0 +1,29 @@
+
+<div class="row" *ngIf="comments">
+    <div class="col-sm-12"  *ngFor="let item of comments">
+        <hr>
+        <p>{{item.comment}} <span style="float:right;font-style:italic">-{{item.name}}</span></p>        
+    </div>
+</div>
+
+<div class="row">
+        <div class="col-lg-3"></div>
+        <div class="col-lg-6">      
+          <form class="form-signin" #form="ngForm" (submit)="onSubmit(form)">
+              <!-- <input type="hidden" name="bid" #bid="ngModel" [(ngModel)]="cm.bid" value="{{blogId}}"> -->
+            <br/><br/>
+            <!-- ALERT MESSAGE Div-->
+            <div [ngClass]="dataService.currentClasses" role="alert" *ngIf="dataService.alert" [innerHTML]="dataService.alert"></div>
+            <input type="text" #name="ngModel" name="name" [(ngModel)]="cm.name" class="form-control" placeholder="Your Name">
+            
+            <br>
+            <div class="form-group">
+              <label for="my-textarea"  class="form-check-label">Your Comment</label>
+              <textarea #comment="ngModel" [(ngModel)]="cm.comment" class="form-control" name="comment" rows="3"></textarea>
+            </div>
+            <br>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>    
+          </form>
+        </div>
+        <div class="col-lg-3"></div>
+      </div>

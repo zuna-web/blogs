@@ -1,0 +1,43 @@
+<nav class="navbar navbar-expand-md navbar-light">
+    <div class="container">
+      <a class="navbar-brand" [routerLink]="['/']" routerLinkActive="router-link-active"  href="#">ZunaWeb Blogs</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item"  *ngIf="!(isLoggedIn$ | async)">
+            <a class="nav-link" [routerLink]="['/']" routerLinkActive="router-link-active"  href="#">Home</a>
+          </li>
+          <li class="nav-item"  *ngIf="!(isLoggedIn$ | async)">
+            <a class="nav-link" [routerLink]="['/about-us']" routerLinkActive="router-link-active"  href="#">About Us</a>
+          </li>
+          <li class="nav-item"  *ngIf="!(isLoggedIn$ | async)">
+            <a class="nav-link" [routerLink]="['/contact-us']" routerLinkActive="router-link-active"  href="#">Contact Us</a>
+          </li>
+          <li class="nav-item" *ngIf="!(isLoggedIn$ | async)">
+            <a class="nav-link" [routerLink]="['/login']" routerLinkActive="router-link-active"  href="#">Login</a>
+          </li>
+          <li class="nav-item" *ngIf="isLoggedIn$ | async as isLoggedIn">
+            <a class="nav-link" [routerLink]="['/admin-dashboard']" routerLinkActive="router-link-active"  href="#">Dashboard</a>
+          </li>
+          <li class="nav-item" *ngIf="isLoggedIn$ | async as isLoggedIn">
+            <a class="nav-link" [routerLink]="['/admin-blogs']" routerLinkActive="router-link-active"  href="#">Blogs</a>
+          </li>
+          <li class="nav-item" *ngIf="isLoggedIn$ | async as isLoggedIn">
+            <a class="nav-link" [routerLink]="['/admin-comments']" routerLinkActive="router-link-active"  href="#">Comments</a>
+          </li>
+          <li class="nav-item" *ngIf="isLoggedIn$ | async as isLoggedIn">
+            <a class="nav-link" [routerLink]="['/admin-messages']" routerLinkActive="router-link-active"  href="#">Messages</a>
+          </li>
+          <li class="nav-item" *ngIf="isLoggedIn$ | async as isLoggedIn">
+            <a class="nav-link" [routerLink]="['/admin-users']" routerLinkActive="router-link-active"  href="#">Users</a>
+          </li>
+          <li class="nav-item" *ngIf="isLoggedIn$ | async as isLoggedIn">
+            <a class="nav-link" (click)="onLogout()" routerLinkActive="router-link-active"  href="#">Logout</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <br><br>

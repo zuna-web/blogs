@@ -1,0 +1,22 @@
+<div class="row">
+  <div class="col-lg-3"></div>
+  <div class="col-lg-6">
+    <form novalidate class="form-signin" #form="ngForm" (submit)="onSubmit(form)">
+      <img src="/assets/images/login.png" alt="Login Logo" width="100%">
+      <br/><br/>
+      <!-- ALERT MESSAGE Div-->
+      <div [ngClass]="dataService.currentClasses" role="alert" *ngIf="dataService.alert" [innerHTML]="dataService.alert"></div>
+      
+      <label for="inputEmail" class="sr-only">Email address</label>
+      <input type="email" #username="ngModel" name="username" [(ngModel)]="user.username" class="form-control" placeholder="Email address"><br>
+      
+
+      <label for="inputPassword" class="sr-only">Password</label>
+      <input type="password" #pass="ngModel" name="pass" [(ngModel)]="user.pass" class="form-control" placeholder="Password">
+      
+      <br>
+      <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>    
+    </form>
+  </div>
+  <div class="col-lg-3"></div>
+</div>

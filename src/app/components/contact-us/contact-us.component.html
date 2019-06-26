@@ -1,0 +1,22 @@
+
+<div class="row">
+    <div class="col-lg-3"></div>
+    <div class="col-lg-6">      
+      <form class="form-signin" #form="ngForm" (submit)="onSubmit(form)">
+        <img src="/assets/images/contact-us.png" alt="Login Logo" width="100%">
+        <br/><br/>
+        <!-- ALERT MESSAGE Div-->
+        <div [ngClass]="dataService.currentClasses" role="alert" *ngIf="dataService.alert" [innerHTML]="dataService.alert"></div>
+        
+        <input type="text" #name="ngModel" name="name" [(ngModel)]="messages.name" class="form-control" placeholder="Your Name" ><br>
+        <br>
+        <div class="form-group">
+          <label for="my-textarea"  class="form-check-label">Message</label>
+          <textarea #message="ngModel" [(ngModel)]="messages.message" class="form-control" name="message" rows="3"></textarea>
+        </div>
+        <br>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>    
+      </form>
+    </div>
+    <div class="col-lg-3"></div>
+  </div>

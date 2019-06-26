@@ -1,0 +1,84 @@
+ 
+  <!-- ALERT MESSAGE Div-->
+  <div [ngClass]="dataService.currentClasses" role="alert" *ngIf="dataService.alert" [innerHTML]="dataService.alert"></div>
+  
+  <div class="card">
+    <div class="card-header">
+      Add Blog
+    </div>
+    <br>
+    <div class="card-block">
+      <div class="container">
+      <form #form="ngForm" (submit)="onSubmit(form)">
+        <input type="hidden" name="id" #id="ngModel" [(ngModel)]="dataService.blogs.id">
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="form-group">
+              <input type="text" placeholder="Blog Title" class="form-control" [(ngModel)]="dataService.blogs.title" name="title"  #title="ngModel" >
+            </div>
+          </div>
+          
+          <div class="col-lg-6">  
+            <div class="form-group">
+              <input type="text" placeholder="Author" class="form-control" [(ngModel)]="dataService.blogs.author"  name="author"  #author="ngModel" >
+            </div>
+          </div>
+        </div> 
+        <div class="row">
+          <div class="col-lg-4"> 
+            <div class="form-group">Small Content
+              <textarea name="small_content" #small_content="ngModel" [(ngModel)]="dataService.blogs.small_content" cols="45" rows="2"></textarea>              
+            </div>
+          </div>  
+          <div class="col-lg-4">   
+            <div class="form-group">Content
+                <textarea name="content" #content="ngModel" [(ngModel)]="dataService.blogs.content" cols="45" rows="2"></textarea>
+            </div>
+          </div>
+          <div class="col-lg-2">
+              <div class="form-group">
+                <label for="phone">Status</label>&nbsp;             
+                <label class="switch">
+                    <input type="checkbox" name="status" #status="ngModel" [(ngModel)]="dataService.blogs.status" checked>
+                    <span class="slider round"></span>
+                </label>
+              </div>
+          </div>
+          <div class="col-lg-2">
+            <input type="submit" value="Submit" class="btn btn-primary btn-block">
+          </div>
+        </div>  
+        <br>
+      </form>
+    </div>
+    </div>
+  </div>
+  <br>
+  <table *ngIf="blogs?.length > 0; else noComments" class="table table-striped">
+      <thead class="thead-inverse">
+        <tr>
+          <th>ID</th>
+          <th>Title</th>
+          <th>Small Content</th>
+          <th>Author</th>
+          <th>Date</th>
+          <th>Status</th>
+          <th>Update</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of blogs">
+          <td>{{item.id}}</td>
+          <td>{{item.title}}</td>
+          <td>{{item.small_content}}</td>
+          <td>{{item.author}}</td>
+          <td>{{item.date * 1000 | date}}</td>
+          <td>{{item.status}}</td>
+          <td><button (click)="updateBlog(item)">Update</button></td>
+        </tr>
+      </tbody>
+    </table>
+    <ng-template #noComments>
+      <hr>
+      <h5>There are no Blogs to Display</h5>
+    </ng-template> 

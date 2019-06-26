@@ -1,0 +1,84 @@
+ 
+  <!-- ALERT MESSAGE Div-->
+  <div [ngClass]="dataService.currentClasses" role="alert" *ngIf="dataService.alert" [innerHTML]="dataService.alert"></div>
+  
+  <div class="card">
+    <div class="card-header">
+      Add User
+    </div>
+    <br>
+    <div class="card-block">
+      <div class="container">
+      <form #form="ngForm" (submit)="onSubmit(form)">
+        <input type="hidden" name="id" #id="ngModel" [(ngModel)]="dataService.user.id">
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="form-group">
+              <input type="text" placeholder="First Name" class="form-control" [(ngModel)]="dataService.user.firstname" name="firstname"  #firstname="ngModel" >
+            </div>
+          </div>
+          
+          <div class="col-lg-6">  
+            <div class="form-group">
+              <input type="text" placeholder="Last Name" class="form-control" [(ngModel)]="dataService.user.lastname"  name="lastname"  #lastname="ngModel" >
+            </div>
+          </div>
+        </div> 
+        <div class="row">
+          <div class="col-lg-4"> 
+            <div class="form-group">
+              <input type="text" placeholder="User Name" class="form-control" [(ngModel)]="dataService.user.username" name="username" #username="ngModel" required > 
+            </div>
+          </div>  
+          <div class="col-lg-4">   
+            <div class="form-group">
+              <input type="text" placeholder="Password"  class="form-control" [(ngModel)]="dataService.user.pass" name="pass" #pass="ngModel" >          
+            </div>
+          </div>
+          <div class="col-lg-2">
+              <div class="form-group">
+                <label for="phone">Status</label>&nbsp;             
+                <label class="switch">
+                    <input type="checkbox" name="status" #status="ngModel" [(ngModel)]="dataService.user.status" checked>
+                    <span class="slider round"></span>
+                </label>
+              </div>
+          </div>
+          <div class="col-lg-2">
+            <input type="submit" value="Submit" class="btn btn-primary btn-block">
+          </div>
+        </div>  
+        <br>
+      </form>
+    </div>
+    </div>
+  </div>
+  <br>
+  <table *ngIf="users?.length > 0; else noComments" class="table table-striped">
+      <thead class="thead-inverse">
+        <tr>
+          <th>ID</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Username</th>
+          <th>Password</th>
+          <th>Status</th>
+          <th>Update</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of users">
+          <td>{{item.id}}</td>
+          <td>{{item.firstname}}</td>
+          <td>{{item.lastname}}</td>
+          <td>{{item.username}}</td>
+          <td>{{item.pass}}</td>
+          <td>{{item.status}}</td>
+          <td><button (click)="updateUser(item)">Update</button></td>
+        </tr>
+      </tbody>
+    </table>
+    <ng-template #noComments>
+      <hr>
+      <h5>There are no Messages</h5>
+    </ng-template>
