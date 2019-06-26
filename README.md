@@ -1,3 +1,22 @@
+#ZunaWeb Private Limited
+This is a simple Blogging website Application for beginners.
+- Angular 7
+- PHP
+- MYSQL
+- Bootstrap
+
+Quick Installation:
+1. Install the Database using the blogs.sql code inside sql_code folder
+2. Place the PHP folder in your apache server properly and do the needful DB settings in db.php
+3. Run the Angular project using ng server
+
+Again this is a basic angular project for beginners using angular 7 and PHP / MYSQL.
+
+Any imporvements are greatly appreciated.
+
+-Yograj Gharat
+
+
 # Blogs
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.9.
